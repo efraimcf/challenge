@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds">
+
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+    
+	<appender name="SERVER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>challenge.log</file>
+	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	        <!-- rollover daily -->
+	        <FileNamePattern>challenge.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+	    </rollingPolicy>
+	    <encoder>
+	        <Pattern>%green(%d) %highlight(%-5level) %cyan(%logger{0}) mdc=%X{id} %msg %n</Pattern>
+	    </encoder>
+	</appender>	
+	
+	<logger name="org.hibernate" level="OFF" />
+    <logger name="org.springframework" level="OFF" />
+    <logger name="org.springframework.transaction" level="OFF" />
+    <logger name="org.springframework.security" level="OFF" />
+    <logger name="org.springframework.web.servlet.mvc" level="INFO" />
+  	
+	<root level="INFO">
+		<appender-ref ref="SERVER" />
+	</root>
+</configuration>

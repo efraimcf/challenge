@@ -1,0 +1,17 @@
+build/
+.idea/
+.gradle/
+out/
+target/
+.iws
+.ipr
+.directory
+.settings
+.classpath
+.project
+.springBeans
+/logs/*
+.metadata/
+/bin/
+src/main/resources/spring/application-config.xml
+target/classes/spring/application-config.xml
