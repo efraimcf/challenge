@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import br.com.cowtysys.challenge.domain.DomainModel;
+import br.com.cowtysys.challenge.repository.DomainModel;
 
 @SuppressWarnings("unchecked")
 @Repository

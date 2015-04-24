@@ -1,4 +1,4 @@
-package br.com.cowtysys.challenge.domain;
+package br.com.cowtysys.challenge.repository;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -6,7 +6,6 @@ import java.util.Calendar;
 import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
 
-/*
 public class AuditInterceptor extends EmptyInterceptor {
 
 	private static final String DATE_MODEL = "dateModel";
@@ -44,4 +43,3 @@ public class AuditInterceptor extends EmptyInterceptor {
         return false;
 	}
 }
-//*/

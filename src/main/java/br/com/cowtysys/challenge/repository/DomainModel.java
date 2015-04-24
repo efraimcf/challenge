@@ -1,4 +1,4 @@
-package br.com.cowtysys.challenge.domain;
+package br.com.cowtysys.challenge.repository;
 
 import java.io.Serializable;
 
@@ -15,7 +15,7 @@ public class DomainModel implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	protected Long id;
 	
 	@Embedded
 	private DateModel dateModel;

@@ -1,4 +1,4 @@
-package br.com.cowtysys.challenge.domain;
+package br.com.cowtysys.challenge.repository;
 
 import java.io.Serializable;
 import java.util.Calendar;
