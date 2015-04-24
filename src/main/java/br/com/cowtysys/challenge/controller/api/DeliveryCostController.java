@@ -1,9 +1,7 @@
 package br.com.cowtysys.challenge.controller.api;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import br.com.cowtysys.challenge.domain.ChallengeResponse;
 import br.com.cowtysys.challenge.domain.DeliveryCostResponse;
 import br.com.cowtysys.challenge.exception.DestinationUnreachableException;
+import br.com.cowtysys.challenge.exception.InvalidParameterValueException;
 import br.com.cowtysys.challenge.exception.NodeNotFoundException;
 import br.com.cowtysys.challenge.facade.ChallengeFacade;
 
@@ -38,11 +37,9 @@ public class DeliveryCostController {
 	private ChallengeResponse getDeliveryCost(@RequestParam(value="source") String source,
 			@RequestParam(value="target") String target,
 			@RequestParam(value="autonomy") double autonomy,
-			@RequestParam(value="gasCost") double gasCost) throws DestinationUnreachableException, NodeNotFoundException{
+			@RequestParam(value="gasCost") double gasCost) throws DestinationUnreachableException, NodeNotFoundException, InvalidParameterValueException{
 		
-		LOGGER.info("OK");
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("Hello", "Word");
+		LOGGER.info("Getting route with data: [Source=" + source + "; Target=" + target + ";Autonomy=" + autonomy + "; GasCost=" + gasCost + ";]");
 
 		DeliveryCostResponse deliveryCostResponse = getFacade().getShortestPath(source, target, autonomy, gasCost);
 		

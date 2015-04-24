@@ -26,42 +26,40 @@ public class GraphRegisterService {
 	@Autowired private EdgeDao edgeDao;
 	
 	@Transactional(readOnly=false, propagation=Propagation.REQUIRES_NEW, isolation=Isolation.REPEATABLE_READ)
-	public void registerGraph(String line){
-		try{
-			LOGGER.trace("saving line item...");
-			LOGGER.info("Line Data: |" + line + "|");
-			
-			String[] data = line.split(Pattern.quote(SPACE));
-			
-			Node source = new Node(data[0]);
-			Node target = new Node(data[1]);
-			
-			validateEdge(source.getName(), target.getName());
+	public void registerGraph(String line) throws EdgeAlreadyRegisteredException {
+		LOGGER.trace("saving line item...");
+		LOGGER.info("Line Data: |" + line + "|");
+		
+		String[] data = line.split(Pattern.quote(SPACE));
+		
+		Node source = getNode(data[0]);
+		Node target = getNode(data[1]);
+		
+		validateEdge(source.getName(), target.getName());
 
-			Double weight = Double.valueOf(data[2]);
+		Double weight = Double.valueOf(data[2]);
 
-			getNodeDao().save(source);
-			getNodeDao().save(target);
+		getNodeDao().save(source);
+		getNodeDao().save(target);
 
-			source = getNodeDao().findByName(source.getName());
-			target = getNodeDao().findByName(target.getName());
-			
-			Edge sourceToTarget = new Edge(target, weight);
-			Edge targetToSource = new Edge(source, weight);
+		source = getNodeDao().findByName(source.getName());
+		target = getNodeDao().findByName(target.getName());
+		
+		Edge sourceToTarget = new Edge(target, weight);
+		Edge targetToSource = new Edge(source, weight);
 
-			getEdgeDao().save(sourceToTarget);
-			getEdgeDao().save(targetToSource);
-			
-			source.addAdjacency(sourceToTarget);
-			target.addAdjacency(targetToSource);
-			
-		}catch(Exception e){
-			LOGGER.error("Error on save line data.", e);
-		}
-
+		getEdgeDao().save(sourceToTarget);
+		getEdgeDao().save(targetToSource);
+		
+		source.addAdjacency(sourceToTarget);
+		target.addAdjacency(targetToSource);
 	}
 
-	private void validateEdge(String sourceName, String targetName) throws EdgeAlreadyRegisteredException {
+	public Node getNode(String name) {
+		return new Node(name);
+	}
+
+	public void validateEdge(String sourceName, String targetName) throws EdgeAlreadyRegisteredException {
 		Node node = getNodeDao().findByName(sourceName);
 		if (node != null){
 			for (Edge edge : node.getAdjacencies()){

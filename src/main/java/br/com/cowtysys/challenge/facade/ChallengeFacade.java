@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import br.com.cowtysys.challenge.domain.DeliveryCostResponse;
 import br.com.cowtysys.challenge.exception.DestinationUnreachableException;
+import br.com.cowtysys.challenge.exception.InvalidParameterValueException;
 import br.com.cowtysys.challenge.exception.NodeNotFoundException;
 import br.com.cowtysys.challenge.service.file.GraphFileParserService;
 import br.com.cowtysys.challenge.service.pathfinder.PathFinderService;
@@ -22,7 +23,10 @@ public class ChallengeFacade {
 		graphFileParserService.parseAndSaveData(file);
 	}
 	
-	public DeliveryCostResponse getShortestPath(String source, String target, double autonomy, double gasCost) throws DestinationUnreachableException, NodeNotFoundException {
+	public DeliveryCostResponse getShortestPath(String source, 
+			String target, 
+			double autonomy, 
+			double gasCost) throws DestinationUnreachableException, NodeNotFoundException, InvalidParameterValueException {
 		return pathFinderService.getShortestPath(source, target, autonomy, gasCost);
 	}
 }

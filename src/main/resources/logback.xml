@@ -9,10 +9,10 @@
     <jmxConfigurator/>
     
 	<appender name="SERVER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-	    <file>${catalina.base}/logs/challenge.log</file>
+	    <file>challenge.log</file>
 	    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 	        <!-- rollover daily -->
-	        <FileNamePattern>${catalina.base}/logs/challenge.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
+	        <FileNamePattern>challenge.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
 	    </rollingPolicy>
 	    <encoder>
 	        <Pattern>[#|%-5level| date=%d{yyyy-MM-dd} time=%d{HH:mm:ss.SSS} thread=%thread controller=%logger{40} %msg |#]%n</Pattern>

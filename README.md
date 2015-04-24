@@ -9,7 +9,9 @@ Register Graph
 Service receives a file with the data of a map of graphs. 
 
 > Request URI: http://[servername]/registergraph
+>
 > Method: **POST**
+>
 > **Example using curl:** curl -v -include --form file=@map.txt http://[servername]/registergraph
 
 Each line contains a source vertex, a target vertex and a weight for the edge, like the example below:

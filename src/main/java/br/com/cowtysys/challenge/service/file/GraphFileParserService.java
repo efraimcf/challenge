@@ -28,7 +28,11 @@ public class GraphFileParserService {
 			br = getBufferedReader(file);
 			String line;
 			while ((line = br.readLine()) != null) {
-				getGraphRegisterService().registerGraph(line);
+				try{
+					getGraphRegisterService().registerGraph(line);
+				}catch(Exception e){
+					LOGGER.error("Error on save line data.", e);
+				}
 			}
 		}catch(IOException e){
 			LOGGER.error("Error on parser graph file.", e);
