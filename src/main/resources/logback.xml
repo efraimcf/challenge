@@ -15,7 +15,7 @@
 	        <FileNamePattern>${catalina.base}/logs/challenge.%d{yyyy-MM-dd}.log.gz</FileNamePattern>
 	    </rollingPolicy>
 	    <encoder>
-	        <Pattern>%green(%d) %highlight(%-5level) %cyan(%logger{0}) mdc=%X{id} %msg %n</Pattern>
+	        <Pattern>[#|%-5level| date=%d{yyyy-MM-dd} time=%d{HH:mm:ss.SSS} thread=%thread controller=%logger{40} %msg |#]%n</Pattern>
 	    </encoder>
 	</appender>	
 	
