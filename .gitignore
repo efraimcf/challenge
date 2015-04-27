@@ -13,5 +13,3 @@ target/
 /logs/*
 .metadata/
 /bin/
-src/main/resources/spring/application-config.xml
-target/classes/spring/application-config.xml
