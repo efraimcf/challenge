@@ -54,4 +54,4 @@ System Requiriments:
 
 - Java 8
 - Apache Tomcat 8
-- MySQL
+- MySQL 14.14
